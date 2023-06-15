@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>One Page website</title>
+	<link rel="stylesheet" type="text/css" href="myStyle.css">
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a href="#sec1">Personal Details</a></li>
+			<li><a href="#sec2">Academic Details</a></li>
+			<li><a href="#sec3">Other Details</a></li>
+			<li><a href="#sec4">Contact</a></li>
+		</ul>
+	</nav>
+	<div id="sec1">
+		<h1><u>REGISTER</u></h1><hr><br>
+		<form action="connect.php" method="post">
+  			<label for="name">Name of Student:</label>
+  			<input type="text" id="prefix" name="prefix" placeholder="Prefix" size="6" required>
+  			<input type="text" id="fname" name="fname" placeholder="First-Name" required>
+  			<input type="text" id="mname" name="mname" placeholder="Middle-Name">
+  			<input type="text" id="lname" name="lname" placeholder="Last-Name" required><br>
+  			<label for="phone">Phone Number:</label>
+  			<input type="tel" id="countrycode" name="countrycode" pattern="+ [0-9]{2}" placeholder="country code" required  size="5">
+  			<input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10 digit number" required><br>
+
+  			<label for="phone_al">Alternate Phone Number:</label>
+  			<input type="tel" id="countrycode2" name="countrycode2" pattern="+ [0-9]{2}" placeholder="country code" required size="5">
+  			<input type="tel" id="phone_al" name="phone_al" pattern="[0-9]{10}" placeholder="10 digit number" required><br>
+
+  			<label for="email">Email:</label>
+			<input type="email" id="email" name="email" placeholder="Email Id" required><br>
+
+			<label for="gender">Gender:</label>
+			<input type="radio" name="gender" value="male"> Male
+			<input type="radio" name="gender" value="female"> Female
+			<input type="radio" name="gender" value="other"> Other<br>
+
+			<label for="dob">Enter your Date of Birth:</label>
+    		<input type="date" name="bday" required pattern="\d{2}-\d{2}-\d{4}" />
+    		<span class="validity"></span><br>
+    		<label for="age">Age:</label>
+			<input type="number" id="age" name="age" required><br>
+
+    		<label for="Aadhaar">Aadhaar Number:</label>
+			<input type="text" id="Aadhaar" name="Aadhaar" required>
+			<span id="lblError" class="error"></span><br>
+			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    		<script type="text/javascript">
+        	$(function () {
+            $("#next1").click(function () {
+                var regex = /^([0-9]{4}[0-9]{4}[0-9]{4}$)|([0-9]{4}\s[0-9]{4}\s[0-9]{4}$)|([0-9]{4}-[0-9]{4}-[0-9]{4}$)/;
+                if (regex.test($("#txtAadhaar").val())) {
+                    $("#lblError").css("visibility", "hidden");
+                	} else {
+                    		$("#lblError").css("visibility", "visible");
+                		}
+            		});
+        		});
+    		</script>
+
+    		<label for="address">Address:</label>
+  			<input type="text" id="ap_name" name="ap_name" placeholder="apartment name or number" required>
+  			<input type="text" id="road" name="road" placeholder="Road name" required>
+  			<input type="text" id="lane" name="lane" placeholder="Lane-Name" required>
+  			<input type="text" id="landmark" name="landmark" placeholder="landmark">
+  			<input type="text" id="city" name="city" placeholder="city" required>
+  			<input type="text" id="state" name="state" placeholder="state" required><br>
+  			<label for="pincode">Pincode:</label>
+			<input type="number" id="pincode" name="pincode" required><br>
+
+			<label for="religion">Religion:</label>
+  			<input type="text" id="religion" name="religion" placeholder="religion" required><br>
+
+  			<label for="blood">Blood Group:</label>
+
+				<select name="blood" id="blood">
+  					<option value="A+">A+</option>
+  					<option value="A-">A-</option>
+  					<option value="B+">B+</option>
+  					<option value="B-">B-</option>
+  					<option value="AB+">AB+</option>
+  					<option value="AB-">AB-</option>
+  					<option value="O+">O+</option>
+  					<option value="O-">O-</option>
+				</select><br>
+
+			<label for="m_stat">Marital Status:</label>
+			<input type="radio" name="m_stat" value="married"> Married
+			<input type="radio" name="m_stat" value="unmarried"> Unmarried
+			<input type="radio" name="m_stat" value="other"> Other<br>
+
+			<label for="category">Category:</label>
+
+				<select name="category" id="category">
+  					<option value="General">General</option>
+  					<option value="SC">SC</option>
+  					<option value="ST">ST</option>
+  					<option value="OBC-A">OBC-A</option>
+  					<option value="OBC-B">OBC-B</option>
+  					
+				</select><br>
+
+			<label for="locality">Locality:</label>
+			<input type="radio" name="locality" value="rural"> Rural
+			<input type="radio" name="locality" value="urban"> Urban<br>
+
+			<label for="sp_q">Sports Quota:</label>
+			<input type="radio" name="sp_q" value="yes"> Yes
+			<input type="radio" name="sp_q" value="no"> No<br>
+
+			<label for="income">Family Income:</label>
+			<input type="number" id="income" name="income" required><br>
+
+			<label for="nationality">Nationality:</label>
+			<input type="radio" name="nationality" value="indian"> Indian
+			<input type="radio" name="nationality" value="nri"> NRI<br>
+
+			<label for="fathername">Father's Name:</label>
+  			<input type="text" id="ffname" name="ffname" placeholder="First-Name" required>
+  			<input type="text" id="fmname" name="fmname" placeholder="Middle-Name">
+  			<input type="text" id="flname" name="flname" placeholder="Last-Name" required><br>
+
+  			<label for="mothername">Mother's Name:</label>
+  			<input type="text" id="mfname" name="mfname" placeholder="First-Name" required>
+  			<input type="text" id="mmname" name="mmname" placeholder="Middle-Name">
+  			<input type="text" id="mlname" name="mlname" placeholder="Last-Name" required><br>
+
+  			<label for="roll">Roll Number:</label>
+			<input type="number" id="roll" name="roll" required><br>
+
+			<label for="pan">PAN Number:</label>
+  			<input type="text" id="pan" name="pan" placeholder="Pan number" required><br>
+
+  			<label for="img">Select image:</label>
+  			<input type="file" id="img" name="img" accept="image/*"><br>
+  			<label for="lastqual">Last Qualification of Student:</label>
+
+				<select name="lastqual" id="lastqual">
+  					<option value="class10">Class 10</option>
+  					<option value="class12">Class 12</option>
+  					<option value="bsc">B.Sc</option>
+  					<option value="diploma">Diploma</option>
+  				</select><br><hr>
+
+    		<input type="button" id="next1" value="Next" />
+
+  			<input type="submit" value="Submit">
+		</form>
+	</div>
+	<div id="sec2">
+		<h1 style="color: lavender;"><u>Academic Details</u></h1><hr>
+
+		<form action="#sec3" style="color: #f7cecb;">
+
+			<label for="schoolname10">Name of School in class 10:</label>
+  			<input type="text" id="schoolname10" name="schoolname10" required><br>
+
+			<label for="board10">Board of Class 10 School:</label>
+
+				<select name="board10" id="board10">
+  					<option value="cbse">CBSE</option>
+  					<option value="icse">ICSE</option>
+  					<option value="stateb">State Board</option>
+  				</select><br>
+
+  			<label for="roll10">Roll Number of Class 10:</label>
+			<input type="number" id="roll10" name="roll10" required><br>
+			<label for="choose10">Choose:</label>
+			<input type="radio" name="choose10" value="cgpa"> CGPA
+			<input type="radio" name="choose10" value="perc"> Percentage<br>
+
+			<label for="c10">Enter Marks of Class 10:</label>
+			<input type="number" id="c10" name="c10" required><br>
+			
+			<label for="file10">Select result file for Class 10:</label>
+			<input type="file" id="file10" name="file10"><br><hr>
+
+
+			<label for="schoolname12">Name of School in class 12:</label>
+  			<input type="text" id="schoolname12" name="schoolname12" required><br>
+
+			<label for="board12">Board of Class12 School:</label>
+
+				<select name="board12" id="board12">
+  					<option value="cbse">CBSE</option>
+  					<option value="icse">ISC</option>
+  					<option value="stateb">State Board</option>
+  				</select><br>
+
+  			<label for="roll12">Roll Number of Class 12:</label>
+			<input type="number" id="roll12" name="roll12" required><br>
+
+			<label for="choose12">Choose:</label>
+			<input type="radio" name="choose12" value="cgpa"> CGPA
+			<input type="radio" name="choose12" value="perc"> Percentage<br>
+
+			<label for="c12">Enter Marks of Class 12:</label>
+			<input type="number" id="c12" name="c12" required><br>
+
+			<label for="file12">Select result file for Class 12:</label>
+			<input type="file" id="file12" name="file12"><br><hr>
+
+			<label for="c_bsc">Done B.SC:</label>
+			<input type="radio" name="c_bsc" value="yes"> Yes
+			<input type="radio" name="c_bsc" value="no"> No<br>
+
+			<label for="college">Name of College: (if B.Sc done)</label>
+  			<input type="text" id="college" name="college"><br>
+
+  			<label for="collegeuniv">Name of University under which your College is Registred:</label>
+  			<input type="text" id="collegeuniv" name="collegeuniv"><br>
+
+  			<label for="rollclg">Roll Number in college:</label>
+			<input type="number" id="rollclg" name="rollclg" required><br>
+
+  			<label for="clgstr">Stream opted in College:</label>
+
+				<select name="clgstr" id="clgstr">
+  					<option value="cs">Computer Science</option>
+  					<option value="phy">Physics</option>
+  					<option value="math">Maths</option>
+  					<option value="oth">Others </option>
+  				</select><br>
+
+  			<label for="chooseclg">Choose:</label>
+			<input type="radio" name="chooseclg" value="cgpa"> CGPA
+			<input type="radio" name="chooseclg" value="perc"> Percentage<br>
+
+			<label for="cclg">Enter Marks of B.Sc:</label>
+			<input type="number" id="cclg" name="cclg" required><br>
+			<label for="clgfile">Select result file for B.Sc:</label>
+			<input type="file" id="clgfile" name="clgfile"><br><hr>
+
+			<label for="extra">Extra-curricular Activity (if any) :</label>
+			<input type="radio" name="extra" value="yes"> Yes
+			<input type="radio" name="extra" value="no"> No<br>
+
+			<label for="detex">Name and any achievement in Extra-curricular activity (if any):</label>
+  			<input type="text" id="detex" name="detex"><br>
+
+  			<label for="actfile">Select certificate for Extra-curricular Activity:</label>
+			<input type="file" id="actfile" name="actfile"><br><hr>
+
+			<input type="button" id="next2" value="Next" />
+
+		</form>
+	</div>
+	<div id="sec3">
+		<h1 style="color: papayawhip;"><u>Other Details</u></h1><br><hr>
+
+		<form action="/action.php" style="color: floralwhite;">
+
+			<label for="locguardian">Do you have a local guardian?  </label>
+			<input type="radio" name="locguardian" value="yes"> Yes
+			<input type="radio" name="locguardian" value="no"> No<br>
+
+			<label for="guardianname">Local Guardian's Name:</label>
+  			<input type="text" id="gfname" name="gfname" placeholder="First-Name" required>
+  			<input type="text" id="gmname" name="gmname" placeholder="Middle-Name">
+  			<input type="text" id="glname" name="glname" placeholder="Last-Name" required><br>
+
+  			<label for="locaddress">Address of Local Guardian:</label>
+  			<input type="text" id="ap_nameloc" name="ap_nameloc" placeholder="apartment name or number" required>
+  			<input type="text" id="roadloc" name="roadloc" placeholder="Road name" required>
+  			<input type="text" id="laneloc" name="laneloc" placeholder="Lane-Name" required>
+  			<input type="text" id="landmarkloc" name="landmarkloc" placeholder="landmark"><br>
+
+  			City : <input type="text" id="cityloc" name="cityloc" placeholder="city" required>
+  			State : <input type="text" id="stateloc" name="stateloc" placeholder="state" required><br>
+  			<label for="pincodeloc">Pincode:</label>
+			<input type="number" id="pincodeloc" name="pincodeloc" required><br><hr>
+
+			<label for="intern">Done any Internship previously ?  </label>
+			<input type="radio" name="intern" value="yes"> Yes
+			<input type="radio" name="intern" value="no"> No<br>
+
+			<label for="interndet">Name and details of Internship (if any):</label>
+  			<input type="text" id="interndet" name="interndet"><br>
+
+  			<label for="internfile">Select certificate for internship:</label>
+			<input type="file" id="internfile" name="internfile"><br><hr>
+
+			<label for="blooddonate">Intend to donate Blood:</label>
+			<input type="radio" name="blooddonate" value="yes"> Yes
+			<input type="radio" name="blooddonate" value="no"> No<br><hr>
+
+			<label for="desal">Critical Disease or Drug Allergy (if any):</label>
+			<input type="radio" name="desal" value="yes"> Yes
+			<input type="radio" name="desal" value="no"> No<br>
+
+			<label for="desaldet">Name and details of Disease or  Allergy (if any):</label>
+  			<input type="text" id="desaldet" name="desaldet"><br><hr>
+
+  			<label for="hostel">Need Hostel ? </label>
+			<input type="radio" name="hostel" value="yes"> Yes
+			<input type="radio" name="hostel" value="no"> No<br><hr>
+
+			<input type="button" id="btnSubmit" value="Submit" />
+		</form>
+	</div>
+	<div id="sec4">
+		<h1 style="color: #240a6e;"><u>COLLEGE CONTACT SECTION</u></h1><br><hr>
+
+		<address style="text-align: center; font-size: 30px;">
+			Visit us at: <u>https://www.caluniv.ac.in/</u><br>
+			JD-2, JD Block, Sector III, Bidhannagar<br>
+			Contact us on : 033 2335 0067<br>
+			Kolkata, West Bengal<br>
+			Pincode - 700106<br>
+		</address>
+	</div>
+
+</body>
+
+</html>		
