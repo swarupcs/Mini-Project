@@ -35,8 +35,68 @@
     }
     echo "<br> <br>";
 
+    $dbname = "Miniproject";
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+    // Check if the table exists
+$tableName = "your_table_name";
+$sql = "SHOW TABLES LIKE '$tableName'";
+$result = mysqli_query($conn, $sql);
 
-    
+
+
+
+if (mysqli_num_rows($result) == 0) {
+    // Table does not exist, create it
+    $createTableSQL = "CREATE TABLE Miniproject.$tableName (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        prefix VARCHAR(10),
+        fname VARCHAR(50),
+        mname VARCHAR(50),
+        lname VARCHAR(50),
+        phone VARCHAR(15),
+        phone_al VARCHAR(15),
+        email VARCHAR(50),
+        gender VARCHAR(10),
+        dob DATE,
+        age INT(3),
+        aadhaar VARCHAR(20),
+        ap_name VARCHAR(50),
+        road VARCHAR(50),
+        lane VARCHAR(50),
+        landmark VARCHAR(50),
+        city VARCHAR(50),
+        state VARCHAR(50),
+        pincode VARCHAR(10),
+        religion VARCHAR(20),
+        blood VARCHAR(10),
+        m_stat VARCHAR(20),
+        category VARCHAR(20),
+        locality VARCHAR(50),
+        sp_q VARCHAR(50),
+        income FLOAT,
+        nationality VARCHAR(50),
+        ffname VARCHAR(50),
+        fmname VARCHAR(50),
+        flname VARCHAR(50),
+        mfname VARCHAR(50),
+        mmname VARCHAR(50),
+        mlname VARCHAR(50),
+        roll VARCHAR(20),
+        pan VARCHAR(20),
+        lastqual VARCHAR(50)
+    )";
+
+    if (mysqli_query($conn, $createTableSQL)) {
+        echo "Table created successfully";
+    } else {
+        echo "Error creating table: " . mysqli_error($conn);
+    }
+} else {
+    echo "Table already exists";
+}
 
 
      // Retrieve form data
@@ -76,6 +136,7 @@
      $pan = $_POST["pan"];
      $lastqual = $_POST["lastqual"];
 
+     /*
      echo "<br><br>";
      echo $prefix;
      echo "<br><br>";
@@ -147,7 +208,27 @@
      echo "<br><br>";
      echo $lastqual;
      echo "<br><br>";
+    */
 
+    // Prepare the SQL statement
+$tableName = "your_table_name";
+$sql = "INSERT INTO $tableName (
+    prefix, fname, mname, lname, phone, phone_al, email, gender, dob, age, aadhaar, ap_name, road, lane, landmark,
+    city, state, pincode, religion, blood, m_stat, category, locality, sp_q, income, nationality,
+    ffname, fmname, flname, mfname, mmname, mlname, roll, pan, lastqual
+) VALUES (
+    '$prefix', '$fname', '$mname', '$lname', '$phone', '$phone_al', '$email', '$gender', '$dob', '$age', '$aadhaar',
+    '$ap_name', '$road', '$lane', '$landmark', '$city', '$state', '$pincode', '$religion', '$blood', '$m_stat',
+    '$category', '$locality', '$sp_q', '$income', '$nationality', '$ffname', '$fmname', '$flname', '$mfname',
+    '$mmname', '$mlname', '$roll', '$pan', '$lastqual'
+)";
+
+// Execute the SQL statement
+if (mysqli_query($conn, $sql)) {
+    echo "Data inserted successfully";
+} else {
+    echo "Error inserting data: " . mysqli_error($conn);
+}
 
 
 
