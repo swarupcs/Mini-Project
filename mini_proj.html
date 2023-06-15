@@ -17,7 +17,7 @@
 	</nav>
 	<div id="sec1">
 		<h1><u>REGISTER</u></h1><hr><br>
-		<form action="connect.php" method="post">
+		<form action="#sec2" method="post">
   			<label for="name">Name of Student:</label>
   			<input type="text" id="prefix" name="prefix" placeholder="Prefix" size="6" required>
   			<input type="text" id="fname" name="fname" placeholder="First-Name" required>
@@ -47,7 +47,7 @@
 
     		<label for="Aadhaar">Aadhaar Number:</label>
 			<input type="text" id="Aadhaar" name="Aadhaar" required>
-			<span id="lblError" class="error"></span><br>
+			<!-- <span id="lblError" class="error"></span><br>
 			<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     		<script type="text/javascript">
         	$(function () {
@@ -60,7 +60,7 @@
                 		}
             		});
         		});
-    		</script>
+    		</script> -->
 
     		<label for="address">Address:</label>
   			<input type="text" id="ap_name" name="ap_name" placeholder="apartment name or number" required>
@@ -148,13 +148,13 @@
 
     		<input type="button" id="next1" value="Next" />
 
-  			<input type="submit" value="Submit">
+  			<!-- <input type="submit" value="Submit"> -->
 		</form>
 	</div>
 	<div id="sec2">
 		<h1 style="color: lavender;"><u>Academic Details</u></h1><hr>
 
-		<form action="#sec3" style="color: #f7cecb;">
+		<form action="#sec3" style="color: #f7cecb;" method="post">
 
 			<label for="schoolname10">Name of School in class 10:</label>
   			<input type="text" id="schoolname10" name="schoolname10" required><br>
@@ -252,7 +252,7 @@
 	<div id="sec3">
 		<h1 style="color: papayawhip;"><u>Other Details</u></h1><br><hr>
 
-		<form action="/action.php" style="color: floralwhite;">
+		<form action="connect.php" style="color: floralwhite;" method="post">
 
 			<label for="locguardian">Do you have a local guardian?  </label>
 			<input type="radio" name="locguardian" value="yes"> Yes
@@ -299,7 +299,8 @@
 			<input type="radio" name="hostel" value="yes"> Yes
 			<input type="radio" name="hostel" value="no"> No<br><hr>
 
-			<input type="button" id="btnSubmit" value="Submit" />
+			<!-- <input type="submit" id="btnSubmit" value="Submit" /> -->
+			<input type="submit" value="Submit"> 
 		</form>
 	</div>
 	<div id="sec4">

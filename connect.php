@@ -40,6 +40,8 @@
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
+
+    /*   First Table Start   */
     // Check if the table exists
 $tableName = "your_table_name";
 $sql = "SHOW TABLES LIKE '$tableName'";
@@ -50,7 +52,7 @@ $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) == 0) {
     // Table does not exist, create it
-    $createTableSQL = "CREATE TABLE Miniproject.$tableName (
+    $createTableSQL1 = "CREATE TABLE Miniproject.$tableName (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         prefix VARCHAR(10),
         fname VARCHAR(50),
@@ -89,7 +91,7 @@ if (mysqli_num_rows($result) == 0) {
         lastqual VARCHAR(50)
     )";
 
-    if (mysqli_query($conn, $createTableSQL)) {
+    if (mysqli_query($conn, $createTableSQL1)) {
         echo "Table created successfully";
     } else {
         echo "Error creating table: " . mysqli_error($conn);
@@ -225,12 +227,192 @@ $sql = "INSERT INTO $tableName (
 
 // Execute the SQL statement
 if (mysqli_query($conn, $sql)) {
-    echo "Data inserted successfully";
+    echo "1st Form Data inserted successfully";
 } else {
-    echo "Error inserting data: " . mysqli_error($conn);
+    echo "1st Form Data Error inserting data: " . mysqli_error($conn);
 }
 
+/*   First Table End   */
 
+/*   Second Table Start   */
+
+// Retrieve form data
+$schoolname10 = $_POST["schoolname10"];
+$board10 = $_POST["board10"];
+$roll10 = $_POST["roll10"];
+$choose10 = $_POST["choose10"];
+$c10 = $_POST["c10"];
+$file10 = $_FILES["file10"]["name"];
+
+$schoolname12 = $_POST["schoolname12"];
+$board12 = $_POST["board12"];
+$roll12 = $_POST["roll12"];
+$choose12 = $_POST["choose12"];
+$c12 = $_POST["c12"];
+$file12 = $_FILES["file12"]["name"];
+
+$c_bsc = $_POST["c_bsc"];
+$college = $_POST["college"];
+$collegeuniv = $_POST["collegeuniv"];
+$rollclg = $_POST["rollclg"];
+$clgstr = $_POST["clgstr"];
+$chooseclg = $_POST["chooseclg"];
+$cclg = $_POST["cclg"];
+$clgfile = $_FILES["clgfile"]["name"];
+
+$extra = $_POST["extra"];
+$detex = $_POST["detex"];
+$actfile = $_FILES["actfile"]["name"];
+
+
+// Check if the table exists
+$tableName = "academic_details";
+$sql = "SHOW TABLES LIKE '$tableName'";
+$result = mysqli_query($conn, $sql);
+
+
+
+
+if (mysqli_num_rows($result) == 0) {
+    // Table does not exist, create it
+    $createTableSQL = "CREATE TABLE $tableName (
+        id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        schoolname10 VARCHAR(255) NOT NULL,
+        board10 VARCHAR(255) NOT NULL,
+        roll10 INT(11) NOT NULL,
+        choose10 VARCHAR(255) NOT NULL,
+        c10 INT(11) NOT NULL,
+        file10 VARCHAR(255),
+        schoolname12 VARCHAR(255) NOT NULL,
+        board12 VARCHAR(255) NOT NULL,
+        roll12 INT(11) NOT NULL,
+        choose12 VARCHAR(255) NOT NULL,
+        c12 INT(11) NOT NULL,
+        file12 VARCHAR(255),
+        c_bsc VARCHAR(3) NOT NULL,
+        college VARCHAR(255),
+        collegeuniv VARCHAR(255),
+        rollclg INT(11) NOT NULL,
+        clgstr VARCHAR(255) NOT NULL,
+        chooseclg VARCHAR(255) NOT NULL,
+        cclg INT(11) NOT NULL,
+        clgfile VARCHAR(255),
+        extra VARCHAR(3) NOT NULL,
+        detex VARCHAR(255),
+        actfile VARCHAR(255)
+    )";
+
+    if (mysqli_query($conn, $createTableSQL)) {
+        echo "Table created successfully";
+    } else {
+        echo "Error creating table: " . mysqli_error($conn);
+    }
+} else {
+    echo "Table already exists";
+}
+
+// Prepare the SQL statement
+$sql = "INSERT INTO $tableName (
+    schoolname10, board10, roll10, choose10, c10, file10,
+    schoolname12, board12, roll12, choose12, c12, file12,
+    c_bsc, college, collegeuniv, rollclg, clgstr, chooseclg, cclg, clgfile,
+    extra, detex, actfile
+) VALUES (
+    '$schoolname10', '$board10', '$roll10', '$choose10', '$c10', '$file10',
+    '$schoolname12', '$board12', '$roll12', '$choose12', '$c12', '$file12',
+    '$c_bsc', '$college', '$collegeuniv', '$rollclg', '$clgstr', '$chooseclg', '$cclg', '$clgfile',
+    '$extra', '$detex', '$actfile'
+)";
+
+// Execute the SQL statement
+if (mysqli_query($conn, $sql)) {
+    echo "2nd Form Data inserted successfully";
+} else {
+    echo "2nd Form Error inserting data: " . mysqli_error($conn);
+}
+
+/*   Second Table End   */
+/*   Third Table Start   */
+
+// Check if the table exists
+$tableName = "other_details";
+$sql = "SHOW TABLES LIKE '$tableName'";
+$result = mysqli_query($conn, $sql);
+
+
+
+
+if (mysqli_num_rows($result) == 0) {
+    // Table does not exist, create it
+    $createTableSQL = "CREATE TABLE $tableName (
+        id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        locguardian VARCHAR(3) NOT NULL,
+        gfname VARCHAR(255) NOT NULL,
+        gmname VARCHAR(255),
+        glname VARCHAR(255) NOT NULL,
+        ap_nameloc VARCHAR(255) NOT NULL,
+        roadloc VARCHAR(255) NOT NULL,
+        laneloc VARCHAR(255) NOT NULL,
+        landmarkloc VARCHAR(255),
+        cityloc VARCHAR(255) NOT NULL,
+        stateloc VARCHAR(255) NOT NULL,
+        pincodeloc INT(11) NOT NULL,
+        intern VARCHAR(3) NOT NULL,
+        interndet VARCHAR(255),
+        internfile VARCHAR(255),
+        blooddonate VARCHAR(3) NOT NULL,
+        desal VARCHAR(3) NOT NULL,
+        desaldet VARCHAR(255),
+        hostel VARCHAR(3) NOT NULL
+    )";
+
+    if (mysqli_query($conn, $createTableSQL)) {
+        echo "Table created successfully";
+    } else {
+        echo "Error creating table: " . mysqli_error($conn);
+    }
+} else {
+    echo "Table already exists";
+}
+
+// Retrieve form data
+$locguardian = $_POST["locguardian"];
+$gfname = $_POST["gfname"];
+$gmname = $_POST["gmname"];
+$glname = $_POST["glname"];
+$ap_nameloc = $_POST["ap_nameloc"];
+$roadloc = $_POST["roadloc"];
+$laneloc = $_POST["laneloc"];
+$landmarkloc = $_POST["landmarkloc"];
+$cityloc = $_POST["cityloc"];
+$stateloc = $_POST["stateloc"];
+$pincodeloc = $_POST["pincodeloc"];
+$intern = $_POST["intern"];
+$interndet = $_POST["interndet"];
+$internfile = $_FILES["internfile"]["name"];
+$blooddonate = $_POST["blooddonate"];
+$desal = $_POST["desal"];
+$desaldet = $_POST["desaldet"];
+$hostel = $_POST["hostel"];
+
+// Prepare the SQL statement
+$tableName = "your_table_name";
+$sql = "INSERT INTO $tableName (
+    locguardian, gfname, gmname, glname, ap_nameloc, roadloc, laneloc, landmarkloc, cityloc, stateloc, pincodeloc,
+    intern, interndet, internfile, blooddonate, desal, desaldet, hostel
+) VALUES (
+    '$locguardian', '$gfname', '$gmname', '$glname', '$ap_nameloc', '$roadloc', '$laneloc', '$landmarkloc', '$cityloc', '$stateloc', '$pincodeloc',
+    '$intern', '$interndet', '$internfile', '$blooddonate', '$desal', '$desaldet', '$hostel'
+)";
+
+// Execute the SQL statement
+if (mysqli_query($conn, $sql)) {
+    echo "3rd Form Data inserted successfully";
+} else {
+    echo "3rd Form Error inserting data: " . mysqli_error($conn);
+}
+
+/*   Third Table End   */
 
 
 ?>
